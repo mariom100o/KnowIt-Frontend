@@ -1,4 +1,6 @@
-document.getElementById('scrape-btn').addEventListener('click', async () => {
+
+// Execute on page load
+document.addEventListener('DOMContentLoaded', async () => {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
     await chrome.scripting.executeScript({
@@ -37,6 +39,12 @@ document.getElementById('scrape-btn').addEventListener('click', async () => {
             document.getElementById('output').value = "No content was scraped.";
         }
     });
+})
+    // Get the current tab
+    
+
+document.getElementById('scrape-btn').addEventListener('click', async () => {
+    
 });
 
 function scrapeShadowAwareArticle() {
