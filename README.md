@@ -10,7 +10,6 @@ KnowIt is a Chrome extension frontend that helps users quickly assess the reliab
 - [Features](#features)  
 - [Demo Screenshots](#demo-screenshots)  
 - [Tech Stack](#tech-stack)  
-- [File Structure](#file-structure)  
 - [Installation & Setup](#installation--setup)  
 - [Usage](#usage)  
 - [Future Work](#future-work)  
@@ -19,7 +18,7 @@ KnowIt is a Chrome extension frontend that helps users quickly assess the reliab
 
 ---
 
-## 🚀 Project Overview  
+## Project Overview  
 During the UW Saves The World Hackathon, we built **KnowIt**, a Chrome extension that empowers readers to:  
 1. **Evaluate article reliability** with a clear score and alternative sources.  
 2. **Detect phishing** in Gmail messages before clicking any links.  
@@ -28,7 +27,7 @@ This frontend repository contains the popup UI, styling, and Chrome-extension wi
 
 ---
 
-## 🔥 Features  
+## Features  
 - **Article Reliability**  
   - Scrapes page content, sends it to a backend evaluator, and displays a reliability percentage.  
   - Offers links to alternative, credible articles.  
@@ -38,7 +37,7 @@ This frontend repository contains the popup UI, styling, and Chrome-extension wi
 
 ---
 
-## 📸 Demo Screenshots  
+## Demo Screenshots  
 
 ### Article Reliability  
 <picture>  
@@ -54,23 +53,10 @@ This frontend repository contains the popup UI, styling, and Chrome-extension wi
 
 ---
 
-## 🛠 Tech Stack  
+## Tech Stack  
 - **HTML5 / CSS3** – Popup markup & theming (light & dark modes)  
 - **JavaScript (ES6)** – DOM manipulation, theme toggle, fetch API  
 - **Chrome Extension Manifest V3** – Permissions, scripting, popup integration  
-
----
-
-## 📁 File Structure  
-
-KnowIt-Frontend/
-├── Assets/                  # Icons & screenshot placeholders
-├── manifest.json            # Chrome extension metadata (v3)
-├── popup.html               # Popup UI markup
-├── popup.css                # Styles: light/dark themes, layout, buttons
-├── popup.js                 # Frontend logic, theme toggle, content scripts
-├── readability.js           # Article‐scraping helper library
-└── README.md                # This documentation
 
 ---
 
@@ -86,7 +72,7 @@ KnowIt-Frontend/
 
 ---
 
-## 🎯 Usage
+## Usage
 -	On any article page:
 	1.	Click the KnowIt icon.
 	2.	View the reliability score and alternative links.
@@ -97,7 +83,7 @@ KnowIt-Frontend/
 
 ---
 
-## 📈 Future Work
+## Future Work
 -	Real-time background phishing detection without manual click
 -	Enhanced reliability dashboard with source citations
 -	User-customizable thresholds and notifications
@@ -105,13 +91,13 @@ KnowIt-Frontend/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome bug reports, feature requests, and pull requests. Please fork, branch, and submit a PR.
 
 ---
 
-## 📄 License
+## License
 
 This project is released under the MIT License. See LICENSE for details.
 
