@@ -76,21 +76,21 @@ KnowIt-Frontend/
 
 ## ⚙️ Installation & Setup  
 1. **Clone this repo**  
-   ```bash
-   git clone https://github.com/yourorg/KnowIt-Frontend.git
+```bash
+git clone https://github.com/yourorg/KnowIt-Frontend.git
 
-	2.	Open Chrome → chrome://extensions/
-	3.	Enable Developer mode (top right)
-	4.	Click Load unpacked → select this project folder
-	5.	Pin the KnowIt extension to your toolbar
+2.	Open Chrome → chrome://extensions/
+3.	Enable Developer mode (top right)
+4.	Click Load unpacked → select this project folder
+5.	Pin the KnowIt extension to your toolbar
 
 ---
 
 ## 🎯 Usage
-	-	On any article page:
+-	On any article page:
 	1.	Click the KnowIt icon.
 	2.	View the reliability score and alternative links.
-	-	In Gmail:
+-	In Gmail:
 	1.	Open an email.
 	2.	Click “Check email for phishing.”
 	3.	See a colored score ring and explanation.
@@ -98,10 +98,10 @@ KnowIt-Frontend/
 ---
 
 ## 📈 Future Work
-	-	Real-time background phishing detection without manual click
-	-	Enhanced reliability dashboard with source citations
-	-	User-customizable thresholds and notifications
-	-	Cross-browser support (Firefox, Edge)
+-	Real-time background phishing detection without manual click
+-	Enhanced reliability dashboard with source citations
+-	User-customizable thresholds and notifications
+-	Cross-browser support (Firefox, Edge)
 
 ---
 
