@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Theme toggle setup
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      document.body.classList.toggle('light-mode');
-      themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        document.body.classList.toggle('dark-mode');
+        document.body.classList.toggle('light-mode');
+        themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
 
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -24,8 +24,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("Scraped content:", content);
 
         // if there is content, make a post request to the server
+
         if (content && content.length > 0) {
+
+            const controller = new AbortController();
+            const timeoutDuration = 5000; // 5 seconds
+            const timeoutId = setTimeout(() => {
+                controller.abort();
+                // Set the loader to hidden
+                document.getElementById('loader').style.display = 'none';
+                // Show timeout message
+                document.getElementById('loaded-content').style.display = 'block';
+                document.getElementById('output').value = "Request timed out. Please try again.";
+            }, timeoutDuration);
+
+
             fetch('http://localhost:4999/evaluate', {
+                signal: controller.signal,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -34,16 +49,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             })
                 .then(response => response.json())
                 .then(data => {
+                    // Clear timeout
+                    clearTimeout(timeoutId);
                     // Set the text area with the scraped content
                     document.getElementById('output').value = JSON.stringify(data);
 
 
                     // Set the loader to hidden
                     document.getElementById('loader').style.display = 'none';
-                    // Enable the laoded content
+                    // Enable the loaded content
                     document.getElementById('loaded-content').style.display = 'block';
                 })
                 .catch((error) => {
+                    // Clear timeout
                     console.log('Error:', error);
                     document.getElementById('output').value = "Error scraping the content." + error;
                 });
