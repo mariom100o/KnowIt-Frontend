@@ -1,7 +1,18 @@
 /* Generalized Styles */
-body.light-mode { --bg: #ffffff; --fg: #000000; }
-body.dark-mode  { --bg: #222222; --fg: #dddddd; }
+body.light-mode {
+    --bg: #ffffff;
+    --fg: #000000;
+    --card-bg: #ffffff;
+    --card-border: #ccc;
+}
+body.dark-mode {
+    --bg: #222222;
+    --fg: #dddddd;
+    --card-bg: #333333;
+    --card-border: #555555;
+}
 body {
+  border-radius: 16px;
   background-color: var(--bg);
   color: var(--fg);
 }
@@ -14,11 +25,37 @@ textarea {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: none;
-  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  border-radius: 6px;
   font-size: 18px;
+  line-height: 24px;
+  text-align: center;
   cursor: pointer;
   color: var(--fg);
+}
+
+#close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: var(--bg);
+  border: 1px solid var(--fg);
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: var(--fg);
+  cursor: pointer;
+}
+#close-btn:hover {
+  background-color: red;
+  color: white;
 }
 
 body {
@@ -70,12 +107,12 @@ h1 {
     text-decoration: none;
     width: 30%;
     color: inherit;
-    border: 1px solid #ccc;
-    border-radius: 12px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;      /* soften the cards’ corners */
     padding: 10px;
     margin: 8px 0;
     transition: box-shadow 0.3s;
-    background-color: white;
 }
   
 .card:hover {

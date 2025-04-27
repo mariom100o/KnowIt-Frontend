@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.body.classList.toggle('light-mode');
         themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
     });
+    // Close popup button
+    const closeBtn = document.getElementById('close-btn');
+    closeBtn.addEventListener('click', () => window.close());
 
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
