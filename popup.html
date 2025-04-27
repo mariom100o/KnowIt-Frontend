@@ -24,38 +24,52 @@
     </div>
   </div>
 
+  <button id="phishing-check" class="phishing-check">Check email for phishing</button>
+
   <div id="loaded-content" style="display: none;">
 
-    <div id="reliScore">
-      <h2 id="reliTitle">Reliability:</h2>
-      <div id="score">
-        <h3 id="scoretext">70%</h3>
+    <div id="phishing-result" class="phishing-result">
+      <h2 id="phishingTitle">Phishing Result:</h2>
+      <div id="phishingScore">
+        <h3 id="phishingScoreText"></h3>
+      </div>
+      <div id="phishingExplanationText">
       </div>
     </div>
-    <textarea id="output" style="width:100%; height:200px; margin-top:10px;"></textarea>
-    <div id="alternatives">
-      <h2 id="title">Alternative Articles!</h2>
-      <div id="links">
-        <a href="https://example.com" class="card">
-          <div class="card-content">
-            <h3>Example Article #1</h3>
-            <p>Short description of what the article is about.</p>
-          </div>
-        </a>
-        <a href="https://example.com" class="card">
-          <div class="card-content">
-            <h3>Example Article #2</h3>
-            <p>Short description of what the article is about.</p>
-          </div>
-        </a>
-        <a href="https://example.com" class="card">
-          <div class="card-content">
-            <h3>Example Article #3</h3>
-            <p>Short description of what the article is about.</p>
-          </div>
-        </a>
+
+    <div id="article-result" class="article-result">
+      <div id="reliScore">
+        <h2 id="reliTitle">Reliability:</h2>
+        <div id="score">
+          <h3 id="scoretext">70%</h3>
+        </div>
+      </div>
+      <textarea id="output" style="width:100%; height:200px; margin-top:10px;"></textarea>
+      <div id="alternatives">
+        <h2 id="title">Alternative Articles!</h2>
+        <div id="links">
+          <a href="https://example.com" class="card">
+            <div class="card-content">
+              <h3>Example Article #1</h3>
+              <p>Short description of what the article is about.</p>
+            </div>
+          </a>
+          <a href="https://example.com" class="card">
+            <div class="card-content">
+              <h3>Example Article #2</h3>
+              <p>Short description of what the article is about.</p>
+            </div>
+          </a>
+          <a href="https://example.com" class="card">
+            <div class="card-content">
+              <h3>Example Article #3</h3>
+              <p>Short description of what the article is about.</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+
   </div>
 
   <script src="popup.js"></script>

@@ -24,20 +24,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, (results) => {
         const content = results[0].result;
         // Start the loader
-        document.getElementById('loader').style.display = 'flex';
-
         // if there is content, make a post request to the server
         if (content && content.length > 0) {
 
             if (tab.url.includes("mail.google.com")) {
-                document.getElementById('phishing-check').style.display = 'block';
+                document.getElementById('phishing-check').style.display = 'flex';
 
                 document.getElementById('phishing-check').addEventListener('click', () => {
                     // Start the loader
-                    document.getElementById('loader').style.display = 'block';
+                    document.getElementById('loader').style.display = 'flex';
                     document.getElementById('loaded-content').style.display = 'none';
                     const controller = new AbortController();
-                    const timeoutDuration = 3000; // 10 seconds
+                    const timeoutDuration = 12000; // 10 seconds
                     const timeoutId = setTimeout(() => {
                         controller.abort();
                         // Set the loader to hidden
@@ -59,15 +57,21 @@ document.addEventListener('DOMContentLoaded', async () => {
                         .then(data => {
                             // Clear timeout
                             clearTimeout(timeoutId);
-                            // Set the text area with the scraped content
-                            document.getElementById('output').value = JSON.stringify(data);
                             // Set the loader to hidden
                             document.getElementById('loader').style.display = 'none';
+
+                            // Populate data
+                            document.getElementById('phishingScoreText').innerText = data.phishingsense
+                            document.getElementById('phishingExplanationText').innerText = data.explanation
                             // Enable the loaded content
                             document.getElementById('loaded-content').style.display = 'block';
+                            document.getElementById('phishing-result').style.display = 'flex';
+                            document.getElementById('phishing-check').style.display = 'none';
                         })
                 })
             } else {
+                document.getElementById('loader').style.display = 'flex';
+
                 const controller = new AbortController();
                 const timeoutDuration = 10000; // 10 seconds
                 const timeoutId = setTimeout(() => {
@@ -100,6 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         document.getElementById('loader').style.display = 'none';
                         // Enable the loaded content
                         document.getElementById('loaded-content').style.display = 'block';
+                        document.getElementById('article-result').style.display = 'block';
                     })
                     .catch((error) => {
                         // Clear timeout
