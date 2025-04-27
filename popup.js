@@ -1,6 +1,13 @@
-
 // Execute on page load
 document.addEventListener('DOMContentLoaded', async () => {
+    // Theme toggle setup
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+      themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
     await chrome.scripting.executeScript({

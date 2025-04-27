@@ -1,4 +1,26 @@
 /* Generalized Styles */
+body.light-mode { --bg: #ffffff; --fg: #000000; }
+body.dark-mode  { --bg: #222222; --fg: #dddddd; }
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+textarea {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--fg);
+}
+
 body {
     width:400px; 
     padding:10px;
