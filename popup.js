@@ -1,4 +1,6 @@
-document.getElementById('scrape-btn').addEventListener('click', async () => {
+
+// Execute on page load
+document.addEventListener('DOMContentLoaded', async () => {
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
     await chrome.scripting.executeScript({
@@ -27,6 +29,12 @@ document.getElementById('scrape-btn').addEventListener('click', async () => {
                 .then(data => {
                     // Set the text area with the scraped content
                     document.getElementById('output').value = JSON.stringify(data);
+
+
+                    // Set the loader to hidden
+                    document.getElementById('loader').style.display = 'none';
+                    // Enable the laoded content
+                    document.getElementById('loaded-content').style.display = 'block';
                 })
                 .catch((error) => {
                     console.log('Error:', error);
@@ -37,7 +45,7 @@ document.getElementById('scrape-btn').addEventListener('click', async () => {
             document.getElementById('output').value = "No content was scraped.";
         }
     });
-});
+})
 
 function scrapeShadowAwareArticle() {
     // First try Readability
