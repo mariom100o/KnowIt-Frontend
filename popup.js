@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         document.getElementById('loader').style.display = 'none';
                         // Show timeout message
                         document.getElementById('loaded-content').style.display = 'block';
-                        document.getElementById('phishing-result').style.display = 'block';
+                        document.getElementById('phishing-result').style.display = 'flex';
                         document.getElementById('output').value = "Request timed out. Please try again.";
                     }, timeoutDuration);
 
@@ -74,10 +74,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                             // Populate data
                             document.getElementById('phishingScoreText').innerText = data.phishingsense
+                            // Assign class to phishing score
+                            const phishingScore = document.getElementById('phishingScore');
+                            phishingScore.classList.add(`phishingScore${data.phishingsense}`);
                             document.getElementById('phishingExplanationText').innerText = data.explanation
                             // Enable the loaded content
                             document.getElementById('loaded-content').style.display = 'block';
-                            document.getElementById('phishing-result').style.display = 'flex';
+                            document.getElementById('phishing-result').style.display = 'block';
                             document.getElementById('phishing-check').style.display = 'none';
                         })
                 })
