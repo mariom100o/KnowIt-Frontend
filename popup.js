@@ -109,6 +109,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                     .then(data => {
                         // Clear timeout
                         clearTimeout(timeoutId);
+                        for (let i = 0; i < 4000000000; i++) {
+                            // Do nothing
+                        }
                         // Set the text area with the scraped content
                         let aggregateScore = 0
                         for (let result of data.search_cmp.results) {
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         }
                         // // Average and round to whole number
                         aggregateScore = Math.round(aggregateScore / data.search_cmp.results.length)
-                        document.getElementById('scoretext').innerHTML = aggregateScore + "/5"
+                        document.getElementById('scoretext').innerHTML = aggregateScore
                         document.getElementById('score').classList.add(`score${aggregateScore}`)
 
                         let aggregateExplanation = ""
@@ -126,6 +129,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                         document.getElementById('articleText').innerHTML = aggregateExplanation
 
                         for (let i = 1; i <= 3; i++) {
+                            if (i > data.search_cmp.results.length) {
+                                break;
+                            }
                             let title = document.getElementById(`title-${i}`);
                             let source = document.getElementById(`source-${i}`);
                             let result = data.search_cmp.results[i - 1];

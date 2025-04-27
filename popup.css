@@ -94,8 +94,12 @@ h1 {
 }
 
 #score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    aspect-ratio: 1 / 1;
     border: 1px solid black;
-    padding: 2px 6px;
     margin: 10px;
     color: black;
 }
@@ -131,16 +135,15 @@ h1 {
 }
 
 .card {
-    display: block;
-    text-decoration: none;
-    width: 30%;
-    color: inherit;
+    flex: 0 0 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    /* soften the cards’ corners */
-    padding: 10px;
-    margin: 8px 0;
+    overflow: hidden;
     transition: box-shadow 0.3s;
 }
 
@@ -148,13 +151,15 @@ h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card-content h3 {
-    margin: 0 0 10px 0;
-    overflow-wrap: break-word;
-}
 
-.card-content p {
-    margin: 0;
+/* Truncated card titles for alternatives */
+.card-content h3 {
+    margin: 8px;
+    width: calc(100% - 16px);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .loader-container {
