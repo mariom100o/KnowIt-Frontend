@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('phishing-check').addEventListener('click', () => {
                     // Start the loader
                     document.getElementById('loader').style.display = 'flex';
-                    document.getElementById('loaded-content').style.display = 'none';
                     const controller = new AbortController();
                     const timeoutDuration = 10000; // 10 seconds
                     const timeoutId = setTimeout(() => {
@@ -53,8 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         document.getElementById('loader').style.display = 'none';
                         // Show timeout message
                         document.getElementById('loaded-content').style.display = 'block';
-                        document.getElementById('phishing-result').style.display = 'flex';
-                        document.getElementById('output').value = "Request timed out. Please try again.";
+                        document.getElementById('phishing-check').style.display = 'none';
+                        document.getElementById('phishing-result').style.display = 'none';
                     }, timeoutDuration);
 
                     fetch('http://localhost:4999/phishing', {
@@ -71,7 +70,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                             clearTimeout(timeoutId);
                             // Set the loader to hidden
                             document.getElementById('loader').style.display = 'none';
-
                             // Populate data
                             document.getElementById('phishingScoreText').innerText = data.phishingsense
                             // Assign class to phishing score
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('loader').style.display = 'flex';
 
                 const controller = new AbortController();
-                const timeoutDuration = 10000; // 10 seconds
+                const timeoutDuration = 60000; // 10 seconds
                 const timeoutId = setTimeout(() => {
                     controller.abort();
                     // Set the loader to hidden
@@ -96,25 +94,46 @@ document.addEventListener('DOMContentLoaded', async () => {
                     // Show timeout message
                     document.getElementById('loaded-content').style.display = 'block';
                     document.getElementById('article-result').style.display = 'block';
-                    document.getElementById('output').value = "Request timed out. Please try again.";
                 }, timeoutDuration);
 
 
-                fetch('http://localhost:4999/evaluate', {
+                fetch('http://localhost:4999/analyze', {
                     signal: controller.signal,
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ content })
+                    body: JSON.stringify({ content: content, url: tab.url })
                 })
                     .then(response => response.json())
                     .then(data => {
                         // Clear timeout
                         clearTimeout(timeoutId);
                         // Set the text area with the scraped content
-                        document.getElementById('output').value = JSON.stringify(data);
+                        let aggregateScore = 0
+                        for (let result of data.search_cmp.results) {
+                            aggregateScore += result.score
+                        }
+                        // // Average and round to whole number
+                        aggregateScore = Math.round(aggregateScore / data.search_cmp.results.length)
+                        document.getElementById('scoretext').innerHTML = aggregateScore + "/5"
+                        document.getElementById('score').classList.add(`score${aggregateScore}`)
 
+                        let aggregateExplanation = ""
+                        for (let result of data.search_cmp.results) {
+                            aggregateExplanation += result.explanation + "\n\n"
+                        }
+                        document.getElementById('articleText').innerHTML = aggregateExplanation
+
+                        for (let i = 1; i <= 3; i++) {
+                            let title = document.getElementById(`title-${i}`);
+                            let source = document.getElementById(`source-${i}`);
+                            let result = data.search_cmp.results[i - 1];
+                            title.innerHTML = result.title;
+
+                            source.href = result.url;
+
+                        }
 
                         // Set the loader to hidden
                         document.getElementById('loader').style.display = 'none';
@@ -125,7 +144,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     .catch((error) => {
                         // Clear timeout
                         console.log('Error:', error);
-                        document.getElementById('output').value = "Error scraping the content." + error;
                     });
             }
         } else {

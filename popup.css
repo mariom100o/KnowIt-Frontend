@@ -99,19 +99,24 @@ h1 {
     margin: 10px;
     color: black;
 }
-.score1{
+
+.score1 {
     background-color: red;
 }
-.score2{
+
+.score2 {
     background-color: orange;
 }
-.score3{
+
+.score3 {
     background-color: yellow;
 }
-.score4{
+
+.score4 {
     background-color: lightgreen;
 }
-.score5{
+
+.score5 {
     background-color: green;
 }
 
@@ -145,6 +150,7 @@ h1 {
 
 .card-content h3 {
     margin: 0 0 10px 0;
+    overflow-wrap: break-word;
 }
 
 .card-content p {
@@ -221,12 +227,12 @@ h1 {
     cursor: pointer;
     transition: color 0.3s ease;
 }
+
 .phishing-check:hover {
     color: #33fa81;
 }
 
 .phishing-result {
-    display: none;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -237,6 +243,7 @@ h1 {
 .article-result {
     display: none;
 }
+
 /* Center the KnowIt logo */
 #logo {
     display: block;
@@ -252,18 +259,23 @@ h1 {
     height: 40px;
     border-radius: 50%;
 }
+
 .phishingScore1 {
     border: 2px solid #33fa81;
 }
+
 .phishingScore2 {
     border: 2px solid #dfff00;
 }
+
 .phishingScore3 {
     border: 2px solid yellow;
 }
+
 .phishingScore4 {
     border: 2px solid orange;
 }
+
 .phishingScore5 {
     border: 2px solid red;
 }
@@ -284,5 +296,6 @@ h1 {
     margin-right: 30px;
     padding-left: 8px;
     padding-right: 8px;
-    translate: 40px -43px;  /* shift 10px right, 5px down */
+    translate: 40px -43px;
+    /* shift 10px right, 5px down */
 }
