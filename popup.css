@@ -236,8 +236,22 @@ h1 {
     align-items: center;
     width: 40px;
     height: 40px;
-    border: 2px solid orange;
     border-radius: 50%;
+}
+.phishingScore1 {
+    border: 2px solid #33fa81;
+}
+.phishingScore2 {
+    border: 2px solid #dfff00;
+}
+.phishingScore3 {
+    border: 2px solid yellow;
+}
+.phishingScore4 {
+    border: 2px solid orange;
+}
+.phishingScore5 {
+    border: 2px solid red;
 }
 
 #phishingScoreText {
