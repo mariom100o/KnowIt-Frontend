@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .then(data => {
                     // Set the text area with the scraped content
                     document.getElementById('output').value = JSON.stringify(data);
+
+
+                    // Set the loader to hidden
+                    document.getElementById('loader').style.display = 'none';
+                    // Enable the laoded content
+                    document.getElementById('loaded-content').style.display = 'block';
                 })
                 .catch((error) => {
                     console.log('Error:', error);
@@ -40,12 +46,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 })
-    // Get the current tab
-    
-
-document.getElementById('scrape-btn').addEventListener('click', async () => {
-    
-});
 
 function scrapeShadowAwareArticle() {
     // First try Readability
