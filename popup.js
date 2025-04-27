@@ -35,13 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     document.getElementById('loader').style.display = 'flex';
                     document.getElementById('loaded-content').style.display = 'none';
                     const controller = new AbortController();
-                    const timeoutDuration = 12000; // 10 seconds
+                    const timeoutDuration = 10000; // 10 seconds
                     const timeoutId = setTimeout(() => {
                         controller.abort();
                         // Set the loader to hidden
                         document.getElementById('loader').style.display = 'none';
                         // Show timeout message
                         document.getElementById('loaded-content').style.display = 'block';
+                        document.getElementById('phishing-result').style.display = 'block';
                         document.getElementById('output').value = "Request timed out. Please try again.";
                     }, timeoutDuration);
 
