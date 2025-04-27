@@ -2,11 +2,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // Theme toggle setup
     const themeToggle = document.getElementById('theme-toggle');
+    const logo = document.getElementById('logo');
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         document.body.classList.toggle('light-mode');
         themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        logo.src = document.body.classList.contains('dark-mode')
+            ? 'Assets/KnowItDark.png'
+            : 'Assets/KnowItLight.png';
     });
+    // Set initial logo based on current theme
+    logo.src = document.body.classList.contains('dark-mode')
+        ? 'Assets/KnowItDark.png'
+        : 'Assets/KnowItLight.png';
     // Close popup button
     const closeBtn = document.getElementById('close-btn');
     closeBtn.addEventListener('click', () => window.close());
@@ -81,6 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     document.getElementById('loader').style.display = 'none';
                     // Show timeout message
                     document.getElementById('loaded-content').style.display = 'block';
+                    document.getElementById('article-result').style.display = 'block';
                     document.getElementById('output').value = "Request timed out. Please try again.";
                 }, timeoutDuration);
 

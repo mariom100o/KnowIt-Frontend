@@ -209,3 +209,8 @@ h1 {
 .article-result {
     display: none;
 }
+/* Center the KnowIt logo */
+#logo {
+    display: block;
+    margin: 16px auto;
+}
