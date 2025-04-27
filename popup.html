@@ -2,63 +2,62 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Universal Article Scraper</title>
-    <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8">
+  <title>Universal Article Scraper</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body class="light-mode">
-    <button id="theme-toggle" title="Toggle theme">🌙</button>
-    <div id="titlediv">
-        <h1 id="titleA">Rel</h1>
-        <h1 id="titleB">AI</h1>
-        <h1 id="titleA">bly</h1>
+  <button id="theme-toggle" title="Toggle theme">🌙</button>
+  <div id="titlediv">
+    <h1 id="titleA">Rel</h1>
+    <h1 id="titleB">AI</h1>
+    <h1 id="titleA">bly</h1>
+  </div>
+  <div id="loader" class="loader-container">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-    <div class="loader-container">
+  </div>
 
-        <div id="loader" class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+  <div id="loaded-content" style="display: none;">
 
-    <div id="loaded-content" style="display: none;">
-
-    <div id = "reliScore">
-        <h2 id="reliTitle">Reliability:</h2>
-        <div id = "score">
-            <h3 id="scoretext">70%</h3>
-        </div>
+    <div id="reliScore">
+      <h2 id="reliTitle">Reliability:</h2>
+      <div id="score">
+        <h3 id="scoretext">70%</h3>
+      </div>
     </div>
     <textarea id="output" style="width:100%; height:200px; margin-top:10px;"></textarea>
     <div id="alternatives">
-        <h2 id="title">Alternative Articles!</h2>
-        <div id="links">
-            <a href="https://example.com" class="card">
-                <div class="card-content">
-                  <h3>Example Article #1</h3>
-                  <p>Short description of what the article is about.</p>
-                </div>
-              </a>
-              <a href="https://example.com" class="card">
-                <div class="card-content">
-                  <h3>Example Article #2</h3>
-                  <p>Short description of what the article is about.</p>
-                </div>
-              </a>
-              <a href="https://example.com" class="card">
-                <div class="card-content">
-                  <h3>Example Article #3</h3>
-                  <p>Short description of what the article is about.</p>
-                </div>
-              </a>
-        </div>
+      <h2 id="title">Alternative Articles!</h2>
+      <div id="links">
+        <a href="https://example.com" class="card">
+          <div class="card-content">
+            <h3>Example Article #1</h3>
+            <p>Short description of what the article is about.</p>
+          </div>
+        </a>
+        <a href="https://example.com" class="card">
+          <div class="card-content">
+            <h3>Example Article #2</h3>
+            <p>Short description of what the article is about.</p>
+          </div>
+        </a>
+        <a href="https://example.com" class="card">
+          <div class="card-content">
+            <h3>Example Article #3</h3>
+            <p>Short description of what the article is about.</p>
+          </div>
+        </a>
+      </div>
     </div>
-    </div>
+  </div>
 
-    <script src="popup.js"></script>
+  <script src="popup.js"></script>
 </body>
 
 </html>
