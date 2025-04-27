@@ -86,32 +86,32 @@ KnowIt-Frontend/
 
 ---
 
-🎯 Usage
-	•	On any article page:
+## 🎯 Usage
+	-	On any article page:
 	1.	Click the KnowIt icon.
 	2.	View the reliability score and alternative links.
-	•	In Gmail:
+	-	In Gmail:
 	1.	Open an email.
 	2.	Click “Check email for phishing.”
 	3.	See a colored score ring and explanation.
 
 ---
 
-📈 Future Work
-	•	Real-time background phishing detection without manual click
-	•	Enhanced reliability dashboard with source citations
-	•	User-customizable thresholds and notifications
-	•	Cross-browser support (Firefox, Edge)
+## 📈 Future Work
+	-	Real-time background phishing detection without manual click
+	-	Enhanced reliability dashboard with source citations
+	-	User-customizable thresholds and notifications
+	-	Cross-browser support (Firefox, Edge)
 
 ---
 
-🤝 Contributing
+## 🤝 Contributing
 
 We welcome bug reports, feature requests, and pull requests. Please fork, branch, and submit a PR.
 
 ---
 
-📄 License
+## 📄 License
 
 This project is released under the MIT License. See LICENSE for details.
 
