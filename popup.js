@@ -30,6 +30,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         target: { tabId: tab.id },
         function: scrapeShadowAwareArticle
     }, (results) => {
+        // Hide phishing UI by default
+        document.getElementById('phishing-check').style.display = 'none';
+        document.getElementById('phishing-result').style.display = 'none';
         const content = results[0].result;
         // Start the loader
         // if there is content, make a post request to the server
