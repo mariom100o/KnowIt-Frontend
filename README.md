@@ -1,3 +1,5 @@
+# KnowIt (UWB 2025 Hackathon - Security Track)
+
 # KnowIt Frontend  
 *Submission for UW Saves The World Hackathon – April 27, 2025*  
 
