@@ -60,7 +60,7 @@ This frontend repository contains the popup UI, styling, and Chrome-extension wi
 
 ---
 
-## ⚙️ Installation & Setup  
+## Installation & Setup  
 1. **Clone this repo**  
 	```bash
 	git clone https://github.com/yourorg/KnowIt-Frontend.git
