@@ -75,14 +75,14 @@ KnowIt-Frontend/
 ---
 
 ## ⚙️ Installation & Setup  
-1. **Clone this repo**  
-```bash
-git clone https://github.com/yourorg/KnowIt-Frontend.git
-
-2.	Open Chrome → chrome://extensions/
-3.	Enable Developer mode (top right)
-4.	Click Load unpacked → select this project folder
-5.	Pin the KnowIt extension to your toolbar
+	1. **Clone this repo**  
+	```bash
+	git clone https://github.com/yourorg/KnowIt-Frontend.git
+	
+	2.	Open Chrome → chrome://extensions/
+	3.	Enable Developer mode (top right)
+	4.	Click Load unpacked → select this project folder
+	5.	Pin the KnowIt extension to your toolbar
 
 ---
 
