@@ -23,51 +23,90 @@ document.addEventListener('DOMContentLoaded', async () => {
         function: scrapeShadowAwareArticle
     }, (results) => {
         const content = results[0].result;
-
-        console.log("Scraped content:", content);
+        // Start the loader
+        document.getElementById('loader').style.display = 'flex';
 
         // if there is content, make a post request to the server
-
         if (content && content.length > 0) {
 
-            const controller = new AbortController();
-            const timeoutDuration = 5000; // 5 seconds
-            const timeoutId = setTimeout(() => {
-                controller.abort();
-                // Set the loader to hidden
-                document.getElementById('loader').style.display = 'none';
-                // Show timeout message
-                document.getElementById('loaded-content').style.display = 'block';
-                document.getElementById('output').value = "Request timed out. Please try again.";
-            }, timeoutDuration);
+            if (tab.url.includes("mail.google.com")) {
+                document.getElementById('phishing-check').style.display = 'block';
 
+                document.getElementById('phishing-check').addEventListener('click', () => {
+                    // Start the loader
+                    document.getElementById('loader').style.display = 'block';
+                    document.getElementById('loaded-content').style.display = 'none';
+                    const controller = new AbortController();
+                    const timeoutDuration = 3000; // 10 seconds
+                    const timeoutId = setTimeout(() => {
+                        controller.abort();
+                        // Set the loader to hidden
+                        document.getElementById('loader').style.display = 'none';
+                        // Show timeout message
+                        document.getElementById('loaded-content').style.display = 'block';
+                        document.getElementById('output').value = "Request timed out. Please try again.";
+                    }, timeoutDuration);
 
-            fetch('http://localhost:4999/evaluate', {
-                signal: controller.signal,
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ content })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Clear timeout
-                    clearTimeout(timeoutId);
-                    // Set the text area with the scraped content
-                    document.getElementById('output').value = JSON.stringify(data);
-
-
+                    fetch('http://localhost:4999/phishing', {
+                        signal: controller.signal,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ content })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Clear timeout
+                            clearTimeout(timeoutId);
+                            // Set the text area with the scraped content
+                            document.getElementById('output').value = JSON.stringify(data);
+                            // Set the loader to hidden
+                            document.getElementById('loader').style.display = 'none';
+                            // Enable the loaded content
+                            document.getElementById('loaded-content').style.display = 'block';
+                        })
+                })
+            } else {
+                const controller = new AbortController();
+                const timeoutDuration = 10000; // 10 seconds
+                const timeoutId = setTimeout(() => {
+                    controller.abort();
                     // Set the loader to hidden
                     document.getElementById('loader').style.display = 'none';
-                    // Enable the loaded content
+                    // Show timeout message
                     document.getElementById('loaded-content').style.display = 'block';
+                    document.getElementById('output').value = "Request timed out. Please try again.";
+                }, timeoutDuration);
+
+
+                fetch('http://localhost:4999/evaluate', {
+                    signal: controller.signal,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content })
                 })
-                .catch((error) => {
-                    // Clear timeout
-                    console.log('Error:', error);
-                    document.getElementById('output').value = "Error scraping the content." + error;
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear timeout
+                        clearTimeout(timeoutId);
+                        // Set the text area with the scraped content
+                        document.getElementById('output').value = JSON.stringify(data);
+
+
+                        // Set the loader to hidden
+                        document.getElementById('loader').style.display = 'none';
+                        // Enable the loaded content
+                        document.getElementById('loaded-content').style.display = 'block';
+                    })
+                    .catch((error) => {
+                        // Clear timeout
+                        console.log('Error:', error);
+                        document.getElementById('output').value = "Error scraping the content." + error;
+                    });
+            }
         } else {
             // If no content was scraped, show an error message
             document.getElementById('output').value = "No content was scraped.";
