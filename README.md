@@ -75,7 +75,7 @@ KnowIt-Frontend/
 ---
 
 ## ⚙️ Installation & Setup  
-	1. **Clone this repo**  
+1. **Clone this repo**  
 	```bash
 	git clone https://github.com/yourorg/KnowIt-Frontend.git
 	
